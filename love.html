@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pink-bg center">
+
+  <!-- Floating Hearts -->
+  <div class="floating-hearts" id="hearts"></div>
+
+  <div class="love-note">
+    <h1>Shiyenn 💖</h1>
+
+    <p>
+      You are the girl of my dreams. I’m glad we are a team — we will be
+      unstoppable, and this is just a small gesture of my love to you.
+    </p>
+
+    <p>
+      You mean the world to me and I can’t express enough. I always picture you
+      as the little girl even when you act tough.
+    </p>
+
+    <p>
+      There is nothing you can do to keep me from loving you. I need you in my
+      life forever and always.
+    </p>
+
+    <p class="signature">
+      Shiyenn, you are more than my Valentine —<br>
+      you are the love of my life 💕
+    </p>
+  </div>
+
+  <script>
+    const heartsContainer = document.getElementById("hearts");
+    const heartEmojis = ["❤️", "💖", "💕"];
+
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("span");
+      heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 6 + Math.random() * 6 + "s";
+      heart.style.fontSize = 22 + Math.random() * 22 + "px";
+      heart.style.animationDelay = Math.random() * 5 + "s";
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
