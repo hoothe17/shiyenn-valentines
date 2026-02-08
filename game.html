@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Heart Puzzle 💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pink-bg center">
+
+  <h2>Match all the hearts 💖</h2>
+  <div class="grid" id="grid"></div>
+
+  <script>
+    const emojis = ['❤️','💖','💕','❤️','💖','💕'];
+    let shuffled = emojis.sort(() => 0.5 - Math.random());
+    let first = null;
+    let lock = false;
+    let matches = 0;
+
+    const grid = document.getElementById("grid");
+
+    shuffled.forEach(emoji => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.emoji = emoji;
+      card.innerText = "💗";
+
+      card.onclick = () => {
+        if (lock || card.classList.contains("matched") || card === first) return;
+
+        card.innerText = emoji;
+
+        if (!first) {
+          first = card;
+        } else {
+          lock = true;
+          if (first.dataset.emoji === emoji) {
+            first.classList.add("matched");
+            card.classList.add("matched");
+            matches += 2;
+            first = null;
+            lock = false;
+
+            if (matches === emojis.length) {
+              setTimeout(() => {
+                window.location.href = "question.html";
+              }, 800);
+            }
+          } else {
+            setTimeout(() => {
+              first.innerText = "💗";
+              card.innerText = "💗";
+              first = null;
+              lock = false;
+            }, 800);
+          }
+        }
+      };
+
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
